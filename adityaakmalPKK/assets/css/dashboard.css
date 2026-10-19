@@ -1,0 +1,400 @@
+/* ======================================================
+   DASHBOARD.CSS — Role Cards, Welcome Banner
+====================================================== */
+
+/* WELCOME BANNER */
+.welcome-banner {
+    background: linear-gradient(135deg, var(--primary) 0%, #6366f1 50%, var(--secondary) 100%);
+    border-radius: var(--radius);
+    padding: 28px 32px;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    overflow: hidden;
+    position: relative;
+}
+.welcome-banner::before {
+    content: '';
+    position: absolute;
+    width: 300px; height: 300px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.06);
+    top: -100px; right: -60px;
+    pointer-events: none;
+}
+.welcome-banner::after {
+    content: '';
+    position: absolute;
+    width: 180px; height: 180px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.04);
+    bottom: -60px; right: 120px;
+    pointer-events: none;
+}
+.welcome-text { position: relative; z-index: 1; }
+.welcome-text h2 { font-size: 22px; font-weight: 700; color: white; margin-bottom: 6px; letter-spacing: -0.3px; }
+.welcome-text p  { font-size: 14px; color: rgba(255,255,255,0.75); }
+.welcome-text .wdate { font-size: 12px; color: rgba(255,255,255,0.55); margin-top: 8px; display: flex; align-items: center; gap: 6px; }
+.welcome-emoji { font-size: 56px; position: relative; z-index: 1; line-height: 1; }
+
+/* ROLE CARDS SECTION */
+.role-section-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--gray);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.role-section-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+}
+
+.role-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 18px;
+    margin-bottom: 28px;
+}
+
+.role-card {
+    background: white;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+    padding: 24px;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+    cursor: default;
+}
+.role-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+}
+.role-card.admin::before      { background: linear-gradient(90deg, #4f46e5, #818cf8); }
+.role-card.tata_usaha::before { background: linear-gradient(90deg, #06b6d4, #67e8f9); }
+.role-card.guru::before       { background: linear-gradient(90deg, #f59e0b, #fcd34d); }
+
+.role-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+
+.role-card-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 16px;
+}
+.role-card-icon {
+    width: 52px; height: 52px;
+    border-radius: 14px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 24px;
+}
+.role-card.admin      .role-card-icon { background: #ede9fe; }
+.role-card.tata_usaha .role-card-icon { background: #cffafe; }
+.role-card.guru       .role-card-icon { background: #fef3c7; }
+
+.role-card-badge {
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+.role-card.admin      .role-card-badge { background: #ede9fe; color: #6d28d9; }
+.role-card.tata_usaha .role-card-badge { background: #cffafe; color: #0e7490; }
+.role-card.guru       .role-card-badge { background: #fef3c7; color: #92400e; }
+
+.role-card h3 {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 6px;
+}
+.role-card p {
+    font-size: 13px;
+    color: var(--gray);
+    line-height: 1.6;
+    margin-bottom: 16px;
+}
+
+.role-card-perms {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+.role-perm-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12.5px;
+    color: var(--dark3);
+}
+.role-perm-item i {
+    width: 18px;
+    font-size: 11px;
+    flex-shrink: 0;
+}
+.role-perm-item i.fa-check { color: var(--success); }
+.role-perm-item i.fa-xmark { color: var(--gray-light); }
+
+/* CURRENT ROLE HIGHLIGHT */
+.role-card.current-role {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(79,70,229,0.12), var(--shadow-md);
+}
+.role-card.current-role .current-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--primary);
+    background: #ede9fe;
+    padding: 3px 10px;
+    border-radius: 20px;
+    margin-top: 14px;
+}
+.role-card:not(.current-role) .current-tag { display: none; }
+
+/* QUICK ACCESS */
+.quick-access-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 12px;
+    margin-bottom: 24px;
+}
+.quick-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 20px 14px;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    text-decoration: none;
+    color: var(--dark);
+    transition: var(--transition);
+    font-size: 13px;
+    font-weight: 600;
+    text-align: center;
+}
+.quick-btn:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); border-color: var(--primary); color: var(--primary); }
+.quick-btn .qb-icon {
+    width: 44px; height: 44px;
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px;
+    transition: var(--transition);
+}
+.quick-btn:hover .qb-icon { transform: scale(1.1); }
+.qb-agenda   .qb-icon { background: #ede9fe; }
+.qb-absensi  .qb-icon { background: #d1fae5; }
+.qb-guru     .qb-icon { background: #fef3c7; }
+.qb-siswa    .qb-icon { background: #cffafe; }
+.qb-kelas    .qb-icon { background: #fee2e2; }
+.qb-laporan  .qb-icon { background: #f0fdf4; }
+
+@media (max-width: 768px) {
+    .welcome-banner { flex-direction: column; padding: 22px; }
+    .welcome-emoji  { display: none; }
+    .role-cards-grid { grid-template-columns: 1fr; }
+    .quick-access-grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 480px) {
+    .quick-access-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ======================================================
+   LOGIN DEMO CARDS
+====================================================== */
+.login-demo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 18px;
+    margin-bottom: 28px;
+}
+
+.login-demo-card {
+    background: white;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    transition: var(--transition);
+    position: relative;
+}
+.login-demo-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+
+/* top accent bar */
+.login-demo-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+}
+.login-demo-card.ldc-admin::before      { background: linear-gradient(90deg,#4f46e5,#818cf8); }
+.login-demo-card.ldc-tata_usaha::before { background: linear-gradient(90deg,#06b6d4,#67e8f9); }
+.login-demo-card.ldc-guru::before       { background: linear-gradient(90deg,#f59e0b,#fcd34d); }
+
+.ldc-head {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 20px 20px 14px;
+}
+
+.ldc-avatar {
+    width: 52px; height: 52px;
+    border-radius: 14px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 24px;
+    flex-shrink: 0;
+}
+.ldc-admin      .ldc-avatar { background: #ede9fe; }
+.ldc-tata_usaha .ldc-avatar { background: #cffafe; }
+.ldc-guru       .ldc-avatar { background: #fef3c7; }
+
+.ldc-head-text h3 {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 3px;
+}
+.ldc-head-text .ldc-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 2px 10px;
+    border-radius: 20px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+.ldc-admin      .ldc-badge { background:#ede9fe; color:#6d28d9; }
+.ldc-tata_usaha .ldc-badge { background:#cffafe; color:#0e7490; }
+.ldc-guru       .ldc-badge { background:#fef3c7; color:#92400e; }
+
+.ldc-body {
+    padding: 0 20px 16px;
+    border-top: 1px solid var(--border);
+    margin-top: 4px;
+}
+
+.ldc-cred {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 14px 0 14px;
+}
+
+.ldc-cred-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+}
+.ldc-cred-row .ldc-cred-label {
+    width: 70px;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--gray);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    flex-shrink: 0;
+}
+.ldc-cred-row .ldc-cred-val {
+    font-family: 'Courier New', monospace;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--dark);
+    background: var(--bg);
+    padding: 4px 10px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 6px;
+    cursor: pointer;
+    transition: var(--transition);
+    user-select: all;
+}
+.ldc-cred-val:hover { border-color: var(--primary); background: #f5f3ff; }
+.ldc-cred-val .copy-icon { font-size: 11px; color: var(--gray-light); }
+.ldc-cred-val:hover .copy-icon { color: var(--primary); }
+
+.ldc-desc {
+    font-size: 12.5px;
+    color: var(--gray);
+    line-height: 1.6;
+    margin-bottom: 14px;
+    padding-bottom: 14px;
+    border-bottom: 1px dashed var(--border);
+}
+
+.ldc-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    padding: 10px;
+    border-radius: var(--radius-sm);
+    font-size: 13px;
+    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+    border: none;
+    cursor: pointer;
+    transition: var(--transition);
+    text-decoration: none;
+    color: white;
+}
+.ldc-btn:hover { transform: translateY(-2px); }
+.ldc-admin      .ldc-btn { background: linear-gradient(135deg,#4f46e5,#6366f1); box-shadow:0 4px 12px rgba(79,70,229,0.3); }
+.ldc-tata_usaha .ldc-btn { background: linear-gradient(135deg,#0891b2,#06b6d4); box-shadow:0 4px 12px rgba(6,182,212,0.3); }
+.ldc-guru       .ldc-btn { background: linear-gradient(135deg,#d97706,#f59e0b); box-shadow:0 4px 12px rgba(245,158,11,0.3); }
+.ldc-admin      .ldc-btn:hover { box-shadow:0 6px 20px rgba(79,70,229,0.5); }
+.ldc-tata_usaha .ldc-btn:hover { box-shadow:0 6px 20px rgba(6,182,212,0.5); }
+.ldc-guru       .ldc-btn:hover { box-shadow:0 6px 20px rgba(245,158,11,0.5); }
+
+/* toast copy */
+.copy-toast {
+    position: fixed;
+    bottom: 70px;
+    left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    background: var(--dark);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 30px;
+    font-size: 13px;
+    font-weight: 500;
+    opacity: 0;
+    transition: all 0.3s ease;
+    z-index: 9999;
+    pointer-events: none;
+    white-space: nowrap;
+}
+.copy-toast.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+@media (max-width: 768px) {
+    .login-demo-grid { grid-template-columns: 1fr; }
+}
